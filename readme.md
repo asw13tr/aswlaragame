@@ -1,0 +1,3 @@
+- Projeyi indir.
+- migration çalıştır.
+- 
