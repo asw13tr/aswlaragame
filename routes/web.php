@@ -1,11 +1,16 @@
 <?php
-Route::get('', function(){
-    echo "ASW WEB SİTE YAZILIMI";
 
+Route::get('',"MainController@index")->name('frontpage');
+Route::get('oyun/{slug}', "MainController@game")->name('game');
+Route::get('kategori/{slug}', "MainController@category")->name('game.category');
+Route::post('oyla/oyun/{id}/{oy}', "MainController@ajaxGameVote")->name('game.vote');
+Route::get('en-iyi-oyunlar', "MainController@bestGames")->name('game.list.best');
+Route::get('en-cok-oynanan-oyunlar', "MainController@popularGames")->name('game.list.popular');
+Route::get('en-yeni-oyunlar', "MainController@lastGames")->name('game.list.last');
 
-
-})->name('frontpage');
-
+Route::get('blog', "BlogController@index")->name('blog');
+Route::get('blog/{slug}/kategori', "BlogController@filterCategory")->name('blog.category');
+Route::get('blog/{slug}', "BlogController@detail")->name('blog.detail');
 
 //PAROLA SIFIRLAMA İŞLEMLERİ
 Route::post('/password-reset-update/{user}',        "PasswordResetController@passwordResetFormPost"     )->name('password.reset.update.post');
@@ -28,7 +33,7 @@ Route::prefix('setup')->group(function(){
 
 //MAIN ROUTE
 Route::group(['middleware', 'aswMiddleware'], function(){
-$prePanel = !asw('pre_panel_url')? 'aswpanel' : asw('pre_panel_url');
+$prePanel = !env('APP_SETUP', false)? 'aswpanel' : asw('pre_panel_url');
 
 // YÖNETİCİ PANELİ GRUBU
 Route::get($prePanel.'/login',                 "Panel\LogonController@login"               )->name('panel.login');
@@ -162,4 +167,6 @@ Route::prefix('setup')->group(function(){
 Auth::routes();
 
 
+
 }); //END MAIN ROUTE
+Route::get('{slug}',"MainController@page")->name('page');

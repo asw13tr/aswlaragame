@@ -49,6 +49,7 @@ class SetupController extends Controller{
         fwrite($file, $this->getEnv($request));
         fclose($file);
         sleep(7);
+        Artisan::call('cache:clear');
         return redirect()->route('setup.migrate');
     }
 
@@ -70,15 +71,16 @@ APP_KEY='.env("APP_KEY").'
 APP_DEBUG=false
 APP_URL=http://localhost
 APP_INSTALL=true
+APP_SETUP=true
 
 LOG_CHANNEL=stack
 
 DB_CONNECTION='.$request->get("connection", "mysql").'
 DB_HOST='.$request->get("host", "127.0.0.1").'
 DB_PORT='.$request->get("port", "3306").'
-DB_DATABASE='.$request->get("database", "").'
-DB_USERNAME='.$request->get("username", "").'
-DB_PASSWORD='.$request->get("password", "").'
+DB_DATABASE="'.$request->get("database", "").'"
+DB_USERNAME="'.$request->get("username", "").'"
+DB_PASSWORD="'.$request->get("password", "").'"
 
 BROADCAST_DRIVER=log
 CACHE_DRIVER=file

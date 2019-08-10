@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,400i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap&subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+
+
+<header id="header" class="navbar navbar-default navbar-fixed-top">
+<div class="container">
+<div class="row">
+    <div class="col-xs-6 col-md-4">
+        <a href="" id="logo" class="pull-left"><img src="./img/logo.png" class="img-responsive"></a>
+        <div id="search" class="hidden-xs">
+            <input type="search" name="s" aria-label="Oyun ara" placeholder="Oyunları ara"/>
+            <button class="glyphicon glyphicon-search"></button>
+        </div>
+    </div>
+    <div class="col-xs-6 col-md-8">
+    <button id="buttonToggleMenu" class="btn btn-default glyphicon glyphicon-menu-hamburger pull-right"
+        type="button" data-toggle="collapse" data-target="#collapseMobileMenu" aria-expanded="false" aria-controls="collapseMobileMenu"></button>
+    <ul id="headerMenu" class="nav nav-pills hidden-sm hidden-xs">
+        <li><a href=""><em class="glyphicon glyphicon-fire"></em> Yeni Oyunlar</a></li>
+        <li><a href=""><em class="glyphicon glyphicon-signal"></em> En İyileri</a></li>
+        <li><a href=""><em class="glyphicon glyphicon-star"></em> Popüler</a></li>
+        <li><a href=""><em class="glyphicon glyphicon-cloud"></em> Çok Oyunculu</a></li>
+        <li><a href=""><em class="glyphicon glyphicon-road"></em> Yarış Oyunları</a></li>
+    </ul>
+    </div>
+</div>
+</div>
+</header>
+
+
+
+<!-- # ANA CONTAINER -->
+<div class="container single">
+<div id="wrapper">
+<div class="row">
+
+<!-- SOL KISIM -->
+<section class="col-md-8" id="game-single">
+<div id="scaleToObjGame" class="text-center wb p10 mb10">
+    <label>Ölçek %100</label>
+    <input type="range" min="0" max="200" step="5" value="100">
+</div>
+
+<div id="game-obj" class="scaleto scale-4x3">
+    <input type="hidden" id="objWidth" />
+    <input type="hidden" id="objHeight" />
+      <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
+    codebase="https://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0"
+    id="flash-content" align="middle"
+    class="item-direct-container resizable">
+    <param name="allowScriptAccess" value="never" />
+    <param name="movie" value="./angry-birds.swf" />
+    <param name="quality" value="high" />
+    <param name="wmode" value="window" />
+    <param name="allowfullscreen" value="false" />
+    <param name="allowfullscreeninteractive" value="false" />
+    <param name="fullScreenAspectRatio" value="" />
+    <param name="quality" value="" />
+    <param name="play" value="true" />
+    <param name="loop" value="true" />
+    <param name="menu" value="" />
+    <param name="hasPriority" value="true" />
+    <embed src="./angry-birds.swf"
+      class="item-direct-container resizable"
+      id="objGame"
+      name="flash-content"
+      align="middle"
+      wmode="window"
+      allowfullscreen="false"
+      allowfullscreeninteractive="false"
+      fullScreenAspectRatio=""
+      quality="high"
+      play="true"
+      loop="true"
+      allowScriptAccess="never"
+      hasPriority="true"
+      type="application/x-shockwave-flash"
+      pluginspage="https://www.adobe.com/go/getflashplayer"></embed>
+  </object>
+</div>
+
+<!-- OYUN BİLGİLERİ -->
+<div id="game-info" class="game-box">
+    <h1 class="title">Kızgın kuşlar oyunu oyna</h1>
+    <div id="game-info-buttons" class="hidden-xs">
+        <button onclick="jsShowScaleBar()" class="btn btn-default btn-xs"><em class="glyphicon glyphicon-search"></em> Boyutlandır</button>
+        <button onclick="jsFocus()" class="btn btn-default btn-xs"><em class="glyphicon glyphicon-lamp"></em> Odaklan</button>
+    </div>
+    <div class="clearfix"></div>
+    <small>11 Temmuz 2017 tarihinde eklendi 7.890 kez oynandı.</small>
+</div>
+
+<!-- OYUNU BEĞENDİN Mİ -->
+<div id="game-likes" class="game-box">
+    <h4 class="title">Bu oyunu beğendiniz mi?</h4><hr>
+    <div class="row mt15">
+        <div class="col-sm-6">
+            <button class="btn btn-success"><em class="glyphicon glyphicon-thumbs-up"></em> Evet</button>
+            <button class="btn btn-danger"><em class="glyphicon glyphicon-thumbs-down"></em> Hayır</button>
+        </div>
+        <div class="col-sm-6">
+            <div class="progress">
+                <div class="progress-bar progress-bar-success progress-bar-striped" style="width: 75%">75%</div>
+                <div class="progress-bar progress-bar-danger progress-bar-striped" style="width: 25%">25%</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="game-desc" class="game-box">
+    <h4 class="title">Oyun açıklaması</h4><hr>
+    <p>Eğer sizde çocukluğunuzu 90’lı yıllarda yaptıysanız. Bilmemeniz imkansız olan bir oyun ile karşınızdayız. 90 yılların en eğlenceli ve popüler konsol oyuncağı olan efsane atarinin vazgeçilmez oyunu süper mario oyunu oynamak için doğru adrestesiniz.</p>
+    <p>Mario karakteri 1981 yılında Shigeru Miyamoto tarafından Nintendo için geliştirilen Donkey Kong isimli oyun esnasında ortaya çıkmıştır. Donkey Kong oyunu piyasaya sürüldüğü zamanlar çok iyi tepkiler almış ve beğenilmiş. Ardından karakterin oluşturucusu Shigeru Miyamotoben bu karakterin üzerinde biraz daha çalışmak ve geliştirmek isteyerek Mario adını verdiğimiz karakteri oluşturmuştur.</p>
+</div>
+
+
+
+
+</section>
+<!-- SOL KISIM SON -->
+
+
+
+<!-- SAĞ KISIM -->
+<aside class="col-md-4">
+
+    <div class="row">
+        <section class="col-xs-6 col-sm-3 col-md-6 glitem"><a href=""><img src="https://picsum.photos/id/2/400/300" class="img-responsive"><div class="info"><h3>Uçan arabalar yarışıyor oyunu oyna</h3><span>Puan: <b>%75</b> - Oynanma: <b>7.866</b></span></div></a></section>
+        <section class="col-xs-6 col-sm-3 col-md-6 glitem"><a href=""><img src="https://picsum.photos/id/33/400/300" class="img-responsive"><div class="info"><h3>Uçan arabalar yarışıyor oyunu oyna</h3><span>Puan: <b>%75</b> - Oynanma: <b>7.866</b></span></div></a></section>
+        <section class="col-xs-6 col-sm-3 col-md-6 glitem"><a href=""><img src="https://picsum.photos/id/44/400/300" class="img-responsive"><div class="info"><h3>Uçan arabalar yarışıyor oyunu oyna</h3><span>Puan: <b>%75</b> - Oynanma: <b>7.866</b></span></div></a></section>
+        <section class="col-xs-6 col-sm-3 col-md-6 glitem"><a href=""><img src="https://picsum.photos/id/55/400/300" class="img-responsive"><div class="info"><h3>Uçan arabalar yarışıyor oyunu oyna</h3><span>Puan: <b>%75</b> - Oynanma: <b>7.866</b></span></div></a></section>
+        <section class="col-xs-6 col-sm-3 col-md-6 glitem"><a href=""><img src="https://picsum.photos/id/66/400/300" class="img-responsive"><div class="info"><h3>Uçan arabalar yarışıyor oyunu oyna</h3><span>Puan: <b>%75</b> - Oynanma: <b>7.866</b></span></div></a></section>
+        <section class="col-xs-6 col-sm-3 col-md-6 glitem"><a href=""><img src="https://picsum.photos/id/7/400/300" class="img-responsive"><div class="info"><h3>Uçan arabalar yarışıyor oyunu oyna</h3><span>Puan: <b>%75</b> - Oynanma: <b>7.866</b></span></div></a></section>
+        <section class="col-xs-6 col-sm-3 col-md-6 glitem"><a href=""><img src="https://picsum.photos/id/21/400/300" class="img-responsive"><div class="info"><h3>Uçan arabalar yarışıyor oyunu oyna</h3><span>Puan: <b>%75</b> - Oynanma: <b>7.866</b></span></div></a></section>
+        <section class="col-xs-6 col-sm-3 col-md-6 glitem"><a href=""><img src="https://picsum.photos/id/61/400/300" class="img-responsive"><div class="info"><h3>Uçan arabalar yarışıyor oyunu oyna</h3><span>Puan: <b>%75</b> - Oynanma: <b>7.866</b></span></div></a></section>
+    </div>
+
+</aside>
+<!-- SAĞ KISIM SON -->
+
+
+
+
+</div>
+</div>
+</div>
+<!-- # ANA CONTAINER -->
+
+
+
+
+
+
+<footer id="footer" class="wb">
+<div class="container">
+    <nav class="text-center">
+        <a href="">Anasayfa</a>
+        <a href="">Son eklenenler</a>
+        <a href="">Popüler oyunlar</a>
+        <a href="">Çok oyunculu</a>
+        <a href="">2 kişilik</a>
+        <a href="">İletişim</a>
+    </nav>
+</div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="./js/bootstrap.min.js"></script>
+<script type="text/javascript" src="./js/script.js"></script>
+<div class="jsFocus"></div>
+</body>
+</html>

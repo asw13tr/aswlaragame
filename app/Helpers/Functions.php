@@ -170,8 +170,22 @@ function getImageSrc($img, $which=null, $before='media'){
 
         default:
             $file = $before.'/'.$img;
-            $result = !file_exists(public_path($file))? getImageSrc($img, 'lg', $before) : url($file);
-            //$result = asw('img_allow_original')==1? url($before.'/'.$img) : $result = url($before.'/lg_'.$img);
+            $lgfile = $before.'/lg_'.$img;
+            $mdfile = $before.'/md_'.$img;
+            $smfile = $before.'/sm_'.$img;
+            if(file_exists(public_path($file))){
+                $result = url($file);
+            }elseif(file_exists(public_path($lgfile))){
+                $result = url($lgfile);
+            }elseif(file_exists(public_path($mdfile))){
+                $result = url($mdfile);
+            }elseif(file_exists(public_path($smfile))){
+                $result = url($smfile);
+            }elseif(file_exists(public_path('images/noimg.png'))){
+                $result =  url('images/noimg.png');
+            }else{
+                $result = null;
+            }
             break;
     }
     return $result;
@@ -264,5 +278,43 @@ function byteToStr($bytes){
         $bytes = '0 bytes';
     }
     return $bytes;
+}
+
+
+function headDescription($description){
+    return strlen($description)<1? asw('description') : $description;
+}
+
+
+function getPercent($like, $dislike){
+    $toplamOy = $like + $dislike;
+    $olumlu = 0;
+    $olumsuz = 0;
+    if($toplamOy > 0){
+    $herYuzde = 100/$toplamOy;
+    $olumlu = round( $herYuzde * $like );
+    $olumsuz = round( $herYuzde * $dislike );
+    }
+    return json_decode( json_encode( [
+            'olumlu' => $olumlu,
+            'olumsuz' => $olumsuz
+        ] ) );
+}
+
+
+function configToNavItem($item){
+    $url = null;
+    $title = $item['title'];
+    if( isset($item['route']) ){
+        if( !is_array($item['route']) ){
+            $url = route($item['route']);
+        }else{
+            $url = route($item['route'][0], $item['route'][1]);
+        }
+    }
+    if( isset($item['url']) ){
+        $url = $item['url'];
+    }
+    return [$title, $url, 'title'=>$title, 'url'=>$url];
 }
 ?>

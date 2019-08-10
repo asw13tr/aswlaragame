@@ -16,7 +16,8 @@ class BlogCategory extends Model
           'status'
      ];
 
-     public function articles(){
+    public function articles(){
          return $this->belongsToMany('App\Article', 'conn_art_cat', 'blog_category_id', 'article_id');
     }
+    
 }

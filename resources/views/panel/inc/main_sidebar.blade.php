@@ -47,7 +47,7 @@ $fullLevel = 3;
     </li>
 
     @if($user->level == $fullLevel)
-    <li class="header">SİTE</li>
+    <li class="header">GENEL</li>
 
     <li class="treeview <?php if( strpos(url()->current(), "/user") ){ echo 'active menu-open'; } ?>">
         <a href="#"><i class="fa fa-users"></i> <span>Kullanıcılar</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
@@ -69,6 +69,10 @@ $fullLevel = 3;
 
     <li><a href="{{ route('panel.media') }}"><i class="fa fa-photo"></i> <span>Medya</span></a></li>
     @endif
+
+    <li class="header">SİTE</li>
+    <li><a href="{{ route('frontpage') }}" target="_blank"><i class="fa fa-desktop"></i> <span>Siteyi Aç</span></a></li>
+
 
 </ul>
 </section>
